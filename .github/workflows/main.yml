@@ -1,0 +1,32 @@
+name: Compile LaTeX Document and Create Release
+
+on:
+  push:
+    branches:
+      - main  # Ou a branch onde você quer criar releases
+  workflow_dispatch:  # Permite iniciar o workflow manualmente, se necessário
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up TeX environment
+        uses: dante-ev/latex-action@v2
+        with:
+          packages: biber
+
+      - name: Compile LaTeX document
+        run: |
+          latexmk -pdf -bibtex -interaction=nonstopmode Trabalho.tex
+        shell: bash
+
+      - name: Upload PDF as Release Asset
+        if: success()  # Só cria a release se a compilação foi bem-sucedida
+        uses: softprops/action-gh-release@v1
+        with:
+          files: Trabalho.pdf
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
