@@ -16,7 +16,7 @@ jobs:
       - name: Set up TeX environment
         run: |
           sudo apt-get update
-          sudo apt-get install -y texlive-base biber
+          sudo apt-get install -y texlive-full biber
 
       - name: Initial Compile LaTeX document
         run: |
