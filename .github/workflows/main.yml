@@ -5,7 +5,11 @@ on:
     branches:
       - main  # Ou a branch onde você quer criar releases
   workflow_dispatch:  # Permite iniciar o workflow manualmente, se necessário
-
+  
+permissions:
+  contents: write
+  id-token: write  # Grant the bot permission to push tags
+  
 jobs:
   build:
     runs-on: ubuntu-latest
