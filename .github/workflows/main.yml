@@ -18,14 +18,32 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y texlive-full biber
 
-      - name: Compile LaTeX document
+      - name: Initial Compile LaTeX document
         run: |
           pdflatex -interaction=nonstopmode Trabalho.tex
-          biber Trabalho
+          
           pdflatex -interaction=nonstopmode Trabalho.tex
           pdflatex -interaction=nonstopmode Trabalho.tex
 
         shell: bash
+
+      - name: Bibliography Compilation
+        run: |
+          biber Trabalho
+            
+        shell: bash
+
+      - name: Second Compile LaTeX document
+        run: |
+          pdflatex -interaction=nonstopmode Trabalho.tex
+
+        shell: bash
+      
+      - name: Last Compile LaTeX document
+        run: |
+          pdflatex -interaction=nonstopmode Trabalho.tex
+        shell: bash
+
 
       - name: Upload PDF as Release Asset
         if: success()  # Só cria a release se a compilação foi bem-sucedida
