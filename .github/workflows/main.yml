@@ -20,10 +20,10 @@ jobs:
 
       - name: Compile LaTeX document
         run: |
-          pdflatex Trabalho.tex
+          pdflatex -interaction=nonstopmode Trabalho.tex
           biber Trabalho
-          pdflatex Trabalho.tex
-          pdflatex Trabalho.tex
+          pdflatex -interaction=nonstopmode Trabalho.tex
+          pdflatex -interaction=nonstopmode Trabalho.tex
 
         shell: bash
 
