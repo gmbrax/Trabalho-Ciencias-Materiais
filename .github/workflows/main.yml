@@ -16,7 +16,7 @@ jobs:
       - name: Set up TeX environment
         run: |
           sudo apt-get update
-          sudo apt-get install -y texlive-full biber
+          sudo apt-get install -y texlive-base biber
 
       - name: Initial Compile LaTeX document
         run: |
@@ -44,6 +44,11 @@ jobs:
           pdflatex -interaction=nonstopmode Trabalho.tex
         shell: bash
 
+      - name: Create Tag for Release
+        run: |
+          VERSION=$(date +'%Y%m%d%H%M%S')  # Example version based on timestamp
+          git tag $VERSION
+          git push origin $VERSION
 
       - name: Upload PDF as Release Asset
         if: success()  # Só cria a release se a compilação foi bem-sucedida
