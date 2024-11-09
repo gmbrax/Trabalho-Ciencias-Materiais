@@ -51,6 +51,8 @@ jobs:
       - name: Create Tag for Release
         run: |
           VERSION=$(date +'%Y%m%d%H%M%S')  # Example version based on timestamp
+          echo "VERSION=$VERSION" >> $GITHUB_ENV  # Set the version as an environment variable
+
           git tag $VERSION
           git push origin $VERSION
 
@@ -59,6 +61,6 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           files: Trabalho.pdf
-          tag_name: $VERSION
+          tag_name: ${{ env.VERSION }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
