@@ -1,10 +1,14 @@
-\documentclass{article}
+\documentclass[12pt]{article}
 \usepackage{graphicx} % Required for inserting images
 \usepackage[a4paper]{geometry}
 \usepackage{setspace}
 \usepackage[brazilian]{babel}
 \usepackage{adjustbox}
 \usepackage{biblatex}
+\usepackage{helvet}
+\usepackage{caption}
+\captionsetup{font={small}} 
+\renewcommand{\familydefault}{\sfdefault}
 \addbibresource{bibliography.bib}
 \geometry{a4paper,left=3cm,right=2cm,top=3cm,bottom=2cm}
 \graphicspath{ {imgs/} }
@@ -28,7 +32,6 @@
     
 \end{center}
 \newpage
-
 \tableofcontents
 \newpage
 \listoffigures
