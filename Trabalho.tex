@@ -1,16 +1,32 @@
-\documentclass{article}
+\documentclass[12pt]{article}
 \usepackage{graphicx} % Required for inserting images
-\usepackage[a4paper]{geometry}
+\usepackage[a4paper, left=3cm, right=2cm, top=3cm, bottom=2cm, ]{geometry}
 \usepackage{setspace}
 \usepackage[brazilian]{babel}
 \usepackage{adjustbox}
 \usepackage{biblatex}
+\usepackage{helvet}
+\usepackage{caption}
+\usepackage{fancyhdr}
+\captionsetup{font={small}} 
+\renewcommand{\familydefault}{\sfdefault}
 \addbibresource{bibliography.bib}
-\geometry{a4paper,left=3cm,right=2cm,top=3cm,bottom=2cm}
 \graphicspath{ {imgs/} }
 \onehalfspacing
+\setlength{\headheight}{2cm}  % Set the header height as needed
+\setlength{\footskip}{1cm}     % Set the footer height as needed
+\setlength{\textheight}{\dimexpr\paperheight - 2.5cm - 2.5cm - \headheight - \footskip - \headsep\relax}
 \begin{document}
+\pagestyle{fancy}
+\fancyhf{}  
+\fancyhead[R]{\small \thepage}
+\fancyhead[L]{\small \leftmark}
+\fancyfoot[R]{\tiny Bernardo Souza Siqueira , Murilo Schittino e Gustavo Henrique Santos Souza De Miranda}
+
 \pagenumbering{gobble}
+
+
+\thispagestyle{empty} 
 \begin{center}
     \textbf{Material Gálio como metal líquido no processo de refrigeração}
     \\
@@ -20,19 +36,19 @@
     \vspace{0.5cm}
     \textbf{Bernardo Souza Siqueira , Murilo Schittino e Gustavo Henrique Santos Souza De Miranda}
     \\
-    \vspace{3cm}
+    \vspace{2cm}
     \includegraphics[width=\textwidth]{gálio.png}
     \\
-    \vspace{3cm}
+    \vspace{2cm}
     \textbf{Uniacademia , Juiz De Fora, Minas Gerais}
     
 \end{center}
 \newpage
-
 \tableofcontents
 \newpage
 \listoffigures
 \newpage
+
 \pagenumbering{arabic}
 \nocite{*}
 \section{Introdução}
